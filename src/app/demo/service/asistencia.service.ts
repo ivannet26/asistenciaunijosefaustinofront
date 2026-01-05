@@ -1,10 +1,11 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpUrlEncodingCodec } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Asistencia, AsistenciaDetalle, PLanilla_Combo } from '../model/Asistencia';
 import { ApiResponse } from '../model/api_response';
 import { GlobalserviceService } from './globalservice.service';
 import { ConfigService } from './config.service';
+import { asistenciareporte } from '../model/asistenciareporte';
 @Injectable({
   providedIn: 'root'
 })
@@ -64,4 +65,15 @@ export class AsistenciaService {
         .set('codigoempleado',codigoEmpleado);
         return this.http.get<ApiResponse<AsistenciaDetalle>>(`${this.apiUrl}/SpListCalculoDetalle`,{params});
     }
+    getReporte(fechaInicio:string,fechaFin:string):Observable<asistenciareporte[]>
+    {
+            let urlConsulta = `${this.apiUrl}/SpListaReporte?fechainicio=${fechaInicio}&fechafin=${fechaFin}`
+
+        const params = new HttpParams()
+        .set('fechainicio', fechaInicio)
+        .set('fechafin',fechaFin);
+        return this.http.get<ApiResponse<asistenciareporte>>(urlConsulta).pipe(map(response => response.data));
+
+    }
+
 }

@@ -39,8 +39,8 @@ import { AuthGuard } from './demo/service/auth.guard';
                     { path: 'blocks', loadChildren: () => import('./demo/components/primeblocks/primeblocks.module').then(m => m.PrimeBlocksModule) },
                     { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) },
                     { path: 'motivohorario', loadChildren: () => import('./demo/components/motivo-horario/motivo-horario.module').then(m => m.MotivoHorarioModule)},
-                    { path: 'horariopersonal', loadChildren: () => import('./demo/components/horariopersonal/horariopersonal.module').then(m => m.HorariopersonalModule)}
-
+                    { path: 'horariopersonal', loadChildren: () => import('./demo/components/horariopersonal/horariopersonal.module').then(m => m.HorariopersonalModule)},
+                    {path:'asistenciareporte', loadChildren: () => import('./demo/components/asistenciareporte/asistenciareporte.module').then(m => m.AsistenciaReporteModule)}
                 ]
             },
 

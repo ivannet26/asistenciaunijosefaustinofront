@@ -2248,7 +2248,7 @@
 .p-buttonset.p-button-success > .p-button,
 .p-splitbutton.p-button-success > .p-button {
     color: #ffffff;
-    background: #22c55e;
+    background: #8c2126;
     border: 1px solid #191919;
   }
   .p-button.p-button-success:not(:disabled):hover,

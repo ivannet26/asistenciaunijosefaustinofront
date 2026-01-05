@@ -1,0 +1,179 @@
+<p-toast></p-toast>
+
+<div class="container mx-auto p-4">
+    <p-panel header="Asistencia general">
+        <p-breadcrumb class="w-full max-w-full" [model]="items"></p-breadcrumb>
+        <br />
+    </p-panel>
+</div>
+
+
+<div class="card p-4">
+
+    <!-- Contenedor principal -->
+    <div class="flex flex-wrap lg:flex-nowrap items-center gap-4 w-full">
+        <div class="flex flex-wrap gap-4 w-full lg:flex-row lg:items-end">
+              <div class="w-full sm:w-auto">
+                <label for="startDate" class="block font-medium text-gray-700 mb-2">Fecha de Inicio:</label>
+                <p-calendar
+                    dateFormat="dd/mm/yy"
+                    [maxDate]="minStartDate"
+                    [(ngModel)]="startDate"
+                    inputId="startDate"
+                    class="w-full"
+                    placeholder="Selecciona una fecha"
+                    [showIcon]="true"
+                    (onDateSelect)="validateDates()"
+                ></p-calendar>
+            </div>
+            <div class="w-full sm:w-auto">
+                <label for="endDate" class="block font-medium text-gray-700 mb-2">Fecha Fin:</label>
+                <p-calendar
+                    dateFormat="dd/mm/yy"
+                    [(ngModel)]="endDate"
+                    [maxDate]="maxEndDate"
+                    inputId="endDate"
+                    class="w-full "
+                    placeholder="Selecciona una fecha"
+                    [showIcon]="true" 
+                    (onDateSelect)="validateDates()"
+                    
+                ></p-calendar>
+            </div>
+             <!-- Botones -->
+            <div class="flex justify-end">
+                
+                
+                    <button
+                        pButton
+                        type="button"
+                        label="Buscar"
+                        icon="pi pi-search"
+                        (click)="Buscar()"
+                        class="p-button-sm p-button-success mr-2 btn-info-pj"
+                        id="btnbuscar"
+                    ></button>
+                
+                
+                <button
+                    pButton
+                    type="button"
+                    label="Exportar"
+                    icon="pi pi-file-excel"
+                    (click)="generarArchivoCarga()"
+                    
+                    class="p-button-sm p-button-success mr-2  btn-info-pj"
+                ></button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Tabla -->
+    <div class="mt-6 overflow-x-auto">
+        <p-table
+            #dt1
+            [value]="asistenciaReporteLista"
+            dataKey="id"
+            editMode="row"
+            [paginator]="true"
+            [rows]="10"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            [loading]="loading"
+            responsiveLayout="scroll"
+            
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>codigo</th>
+                    <th>nombre</th>
+                    <th>fecha</th>
+                    <th>ingreso1</th>
+                    <th>salida1</th>
+                    <th>ingreso2</th>
+                    <th>salida2</th>
+                    <th>ingreso3</th>
+                    <th>salida3</th>
+                    <th>ingreso4</th>
+                    <th>salida4</th>
+                    <th>ingreso5</th>
+                    <th>salida5</th>
+                    <th>ingreso6</th>
+                    <th>salida6</th>
+                    <th>ingreso7</th>
+                    <th>salida7</th>
+                    <th>ingreso8</th>
+                    <th>salida8</th>
+                    <th>ingreso9</th>
+                    <th>salida9</th>
+                    <th>ingreso10</th>
+                    <th>salida10</th>
+                    <th>hfinaldia</th>
+                    <th>observa</th>
+                    <th>dianombre</th>
+                    <th>obs_final</th>
+                    <th>descuento</th>
+                    <th>htotalsemana</th>
+                    <th>turno</th>
+                    <th>cargo</th>
+                    <th>unidad</th>
+                    <th>hr_falta</th>
+                    <th>cpu</th>
+                </tr>
+                
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData>
+                <tr>
+                    <td>{{ rowData.codigo }}</td>
+                    <td>{{rowData.nombre}}</td>
+                    <td>{{rowData.fecha}}</td>
+                    <td>{{rowData.ingreso1}}</td>
+                    <td>{{rowData.salida1}}</td>
+                    <td>{{rowData.ingreso2}}</td>
+                    <td>{{rowData.salida2}}</td>
+                    <td>{{rowData.ingreso3}}</td>
+                    <td>{{rowData.salida3}}</td>
+                    <td>{{rowData.ingreso4}}</td>
+                    <td>{{rowData.salida4}}</td>
+                    <td>{{rowData.ingreso5}}</td>
+                    <td>{{rowData.salida5}}</td>
+                    <td>{{rowData.ingreso6}}</td>
+                    <td>{{rowData.salida6}}</td>
+                    <td>{{rowData.ingreso7}}</td>
+                    <td>{{rowData.salida7}}</td>
+                    <td>{{rowData.ingreso8}}</td>
+                    <td>{{rowData.salida8}}</td>
+                    <td>{{rowData.ingreso9}}</td>
+                    <td>{{rowData.salida9}}</td>
+                    <td>{{rowData.ingreso10}}</td>
+                    <td>{{rowData.salida10}}</td>
+                    
+                    <td>{{rowData.hfinaldia}}</td>
+                    <td>{{rowData.observa}}</td>
+                    <td>{{rowData.dianombre}}</td>
+                    <td>{{rowData.obs_final}}</td>
+                    <td>{{rowData.descuento}}</td>
+                    <td>{{rowData.hTotalSemana}}</td>
+                    
+                    <td>{{rowData.turno}}</td>
+                    <td>{{rowData.cargo}}</td>
+                    <td>{{rowData.unidad}}</td>
+                    <td>{{rowData.hr_falta}}</td>
+                    <td>{{rowData.cpu}}</td>
+                    
+                    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
