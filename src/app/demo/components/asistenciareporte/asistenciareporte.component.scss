@@ -10,9 +10,9 @@
 //     border-color: #c9c9c9 !important;
 //     color: #181111 !important;
 // }
-// ::ng-deep  .p-element .p-ripple .p-datepicker-trigger .p-button-icon-only .ng-tns-c2791360511-5 .p-button .p-component .ng-star-inserted{
-//     background-color: #b8f88d !important;
-// }
+ ::ng-deep  .p-element .p-ripple .p-datepicker-trigger .p-button-icon-only .ng-tns-c2791360511-5 .p-button .p-component .ng-star-inserted{
+     background-color: #b8f88d !important;
+ }
 /* Cambiar el color del borde del textbox */
 // ::ng-deep .p-calendar .p-inputtext {
 //     border-color: #c2bebe;
@@ -29,3 +29,15 @@
 //     box-shadow: 0 0 0 0.2rem rgba(163, 141, 248, 0.25);
 // }
 
+.btn-info-pj{
+    background-color: #0066cc !important;
+    margin-top:15px;
+    border-color: #c2bebe;
+}
+
+.position{
+    display:flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    width: auto;
+}

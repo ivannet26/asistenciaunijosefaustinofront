@@ -16,44 +16,27 @@
             <!-- Fecha de Inicio -->
             <div class="w-full sm:w-auto">
                 <label for="startDate" class="block font-medium text-gray-700 mb-2">Fecha de Inicio:</label>
-                <p-calendar
-                    dateFormat="dd/mm/yy"
-                    [maxDate]="minStartDate"
-                    [(ngModel)]="startDate"
-                    inputId="startDate"
-                    class="w-full"
-                    placeholder="Selecciona una fecha"
-                    [showIcon]="true"
-                    (onDateSelect)="validateDates()"
-                ></p-calendar>
+                <p-calendar dateFormat="dd/mm/yy" [maxDate]="minStartDate" [(ngModel)]="startDate" inputId="startDate"
+                    class="w-full" placeholder="Selecciona una fecha" [showIcon]="true"
+                    (onDateSelect)="validateDates()"></p-calendar>
             </div>
 
             <!-- Fecha Fin -->
             <div class="w-full sm:w-auto">
                 <label for="endDate" class="block font-medium text-gray-700 mb-2">Fecha Fin:</label>
-                <p-calendar
-                    dateFormat="dd/mm/yy"
-                    [(ngModel)]="endDate"
-                    [maxDate]="maxEndDate"
-                    inputId="endDate"
-                    class="w-full "
-                    placeholder="Selecciona una fecha"
-                    [showIcon]="true" 
-                    (onDateSelect)="validateDates()"
-                    
-                ></p-calendar>
+                <p-calendar dateFormat="dd/mm/yy" [(ngModel)]="endDate" [maxDate]="maxEndDate" inputId="endDate"
+                    class="w-full " placeholder="Selecciona una fecha" [showIcon]="true"
+                    (onDateSelect)="validateDates()"></p-calendar>
             </div>
-             <div class="w-full sm:w-auto">
+            <div class="w-full sm:w-auto">
                 <label class="block font-medium text-gray-700 mb-2">Selecciona departamentos</label>
-                    <p-multiSelect [options]="departamentoLista" optionLabel="nombreDepartamento" 
-                    [(ngModel)]="departamentoSeleccionados" optionValue="id"
-                    placeholder="Seleccione departamentos"
-                    class="w-full md:w-80" [maxSelectedLabels]="1"
-                    >
+                <p-multiSelect [options]="departamentoLista" optionLabel="nombreDepartamento"
+                    [(ngModel)]="departamentoSeleccionados" optionValue="id" placeholder="Seleccione departamentos"
+                    class="w-full md:w-80" [maxSelectedLabels]="1">
 
                 </p-multiSelect>
-             </div>
-             <!-- <div class="w-full sm:w-auto">
+            </div>
+            <!-- <div class="w-full sm:w-auto">
                 <button
                     pButton
                     type="button"
@@ -76,45 +59,21 @@
 
         <!-- Botones -->
         <div class="flex justify-end">
-            
-            
-                <button
-                    pButton
-                    type="button"
-                    label="Buscar"
-                    icon="pi pi-search"
-                    (click)="Buscar()"
-                    class="p-button-sm p-button-success mr-2 btn-info-pj"
-                    id="btnbuscar"
-                ></button>
-            
-            
-            <button
-                pButton
-                type="button"
-                label="Exportar"
-                icon="pi pi-file-excel"
-                (click)="generarArchivoCarga()"
-                
-                class="p-button-sm p-button-success mr-2  btn-info-pj"
-            ></button>
+
+
+            <button pButton type="button" label="Buscar" icon="pi pi-search" (click)="Buscar()"
+                class="p-button-sm p-button-success mr-2 btn-info-pj" id="btnbuscar"></button>
+
+
+            <button pButton type="button" label="Exportar" icon="pi pi-file-excel" (click)="generarArchivoCarga()"
+                class="p-button-sm p-button-success mr-2  btn-info-pj"></button>
         </div>
     </div>
 
     <!-- Tabla -->
     <div class="mt-6 overflow-x-auto">
-        <p-table
-            #dt1
-            [value]="Asistenciagenerales"
-            dataKey="id"
-            editMode="row"
-            [paginator]="true"
-            [rows]="10"
-            [rowsPerPageOptions]="[5, 10, 20]"
-            [loading]="loading"
-            responsiveLayout="scroll"
-            [filters]="filters"
-        >
+        <p-table #dt1 [value]="Asistenciagenerales" dataKey="id" editMode="row" [paginator]="true" [rows]="10"
+            [rowsPerPageOptions]="[5, 10, 20]" [loading]="loading" responsiveLayout="scroll" [filters]="filters">
             <ng-template pTemplate="header">
                 <tr>
                     <th>Fecha</th>
@@ -139,57 +98,42 @@
                     <th>unidaddepartamento</th>
                     <th>hrfalta</th>
                     <th>cpumarcador</th>
-                    
+
 
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <th>
-                        <p-columnFilter
-                            type="text"
-                            field="codigoEmpleado"
-                            placeholder="Código"
-                            [showMenu]="false"
-                            MatchMode="contains"
-                        ></p-columnFilter>
+                        <p-columnFilter type="text" field="codigoEmpleado" placeholder="Código" [showMenu]="false"
+                            MatchMode="contains"></p-columnFilter>
                     </th>
                     <th>
-                        <p-columnFilter
-                            type="text"
-                            field="nombreEmpleado"
-                            placeholder="Nombres"
-                            [showMenu]="false"
-                            MatchMode="contains"
-                        ></p-columnFilter>
+                        <p-columnFilter type="text" field="nombreEmpleado" placeholder="Nombres" [showMenu]="false"
+                            MatchMode="contains"></p-columnFilter>
                     </th>
                     <th>
-                        <p-columnFilter
-                            type="text"
-                            field="nombreMarcador"
-                            placeholder="Marcador"
-                            [showMenu]="false"
-                            MatchMode="contains"
-                        ></p-columnFilter>
+                        <p-columnFilter type="text" field="nombreMarcador" placeholder="Marcador" [showMenu]="false"
+                            MatchMode="contains"></p-columnFilter>
                     </th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </ng-template>
 
@@ -217,9 +161,9 @@
                     <td>{{ rowData.dept_name }}</td>
                     <td>{{ rowData.hrfalta }}</td>
                     <td>{{ rowData.cpumarcador }}</td>
-                    
-                    
-                    
+
+
+
                 </tr>
             </ng-template>
 

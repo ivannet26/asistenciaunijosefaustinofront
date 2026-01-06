@@ -11,7 +11,7 @@
   --surface-f: #1e1e1e;
   --text-color: rgba(255, 255, 255, 0.87);
   --text-color-secondary: rgba(255, 255, 255, 0.6);
-  --primary-color: #64B5F6;
+  --primary-color: #0066cc;
   --primary-color-text: #212529;
   --surface-0: #121212;
   --surface-50: #2a2a2a;
@@ -1538,11 +1538,11 @@
   }
 
   p-multiselect.ng-dirty.ng-invalid > .p-multiselect {
-    border-color: #ef9a9a;
+    border-color: #0066cc;
   }
 
   p-password.ng-invalid.ng-dirty > .p-password > .p-inputtext {
-    border-color: #ef9a9a;
+    border-color: #0066cc;
   }
 
   .p-password-panel {
@@ -1558,7 +1558,7 @@
     background: #383838;
   }
   .p-password-panel .p-password-meter .p-password-strength.weak {
-    background: #f48fb1;
+    background: #0066cc;
   }
   .p-password-panel .p-password-meter .p-password-strength.medium {
     background: #ffe082;

@@ -1,17 +1,19 @@
 .btn-info-pj{
-    background-color: #A92228 !important;
+    background-color: #0066cc !important;
     margin-top:15px;
     border-color: #c2bebe;
 }
 
 /* Cambiar el color del botón del calendario */
 ::ng-deep .p-calendar .p-calendar-button { 
-    background-color: #b8f88d !important;
+    background-color: #0066cc !important;
     border-color: #c9c9c9 !important;
     color: #181111 !important;
 }
+
+
 ::ng-deep  .p-element .p-ripple .p-datepicker-trigger .p-button-icon-only .ng-tns-c2791360511-5 .p-button .p-component .ng-star-inserted{
-    background-color: #b8f88d !important;
+    background-color: #013a72 !important;
 }
 /* Cambiar el color del borde del textbox */
 ::ng-deep .p-calendar .p-inputtext {
@@ -28,4 +30,29 @@
     border-color: #5c5e5c;
     box-shadow: 0 0 0 0.2rem rgba(163, 141, 248, 0.25);
 }
+
+:host-context ::ng-deep -p-calendar button.p-datepicker-trigger{
+    background-color: #0066cc !important;
+    border-color: #c9c9c9 !important;
+    color: #181111 !important;
+}
+
+:host-context ::ng-deep -p-calendar button.p-datepicker-trigger:hover{
+    background-color: #0066cc !important;
+    border-color: #c9c9c9 !important;
+}
+
+
+:host ::ng-deep button.p-datepicker-trigger .p-button.p-component{
+    background-color: #0066cc !important;
+    border-color: #c9c9c9 !important;
+    color: #181111 !important;
+}
+
+
+:host ::ng-deep button.p-datepicker-trigger .p-button.p-component:hover{
+    background-color: #038ad8 !important;
+    border-color: #000000 !important;
+}
+
 
