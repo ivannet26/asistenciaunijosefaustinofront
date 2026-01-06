@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { Table, TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import {
@@ -17,6 +17,24 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 import { PanelModule } from 'primeng/panel';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { CalendarModule } from 'primeng/calendar'; // Importa el módulo de PrimeNG
+
+import * as XLSX from 'xlsx';
+
+//datos para el excel
+type AsistenciaReporteExport = {
+  codigo: string;
+  nombre: string;
+  fecha: string;
+  ingreso1: string;
+  salida1: string;
+  ingreso2: string;
+  salida2: string;
+  ingreso3: string;
+  salida3: string;
+  ingreso4: string;
+  salida4: string;
+};
+
 @Component({
   selector: 'app-asistenciareporte',
   standalone: true,
@@ -32,6 +50,8 @@ import { CalendarModule } from 'primeng/calendar'; // Importa el módulo de Prim
   styleUrl: './asistenciareporte.component.scss',
   providers:[MessageService,ConfirmationService],
 })
+
+
 export class AsistenciareporteComponent implements OnInit{
   asistenciaReporteLista:asistenciareporte[] = [];
   items: any[] = [];
@@ -42,6 +62,7 @@ export class AsistenciareporteComponent implements OnInit{
   maxEndDate: Date | null = null;
   stardate: string;
     enddate: string;
+  @ViewChild('dt1') dt1: Table | undefined; // Referencia a p-table
 
   constructor(
     private asistenciaService:AsistenciaService,
@@ -54,6 +75,8 @@ export class AsistenciareporteComponent implements OnInit{
         this.startDate.setDate(1);
         this.endDate = new Date();
   }
+
+  
 
 
   ngOnInit(): void {
@@ -154,4 +177,44 @@ export class AsistenciareporteComponent implements OnInit{
 
         return `${year}${month}${day}`; //formato AAAAMMDD
     }
+    
+    generateEXCEL() {
+      const data = this.asistenciaReporteLista ?? [];
+      
+      const exportData: AsistenciaReporteExport[] =
+      data.length > 0 ? data.map((item: any) => ({
+        //filas a exportar
+          codigo: item.codigo ?? '',
+          nombre: item.nombre ?? '',
+          fecha: item.fecha ?? '',
+          ingreso1: item.ingreso1 ?? '',
+          salida1: item.salida1 ?? '',
+          ingreso2: item.ingreso2 ?? '',
+          salida2: item.salida2 ?? '',
+          ingreso3: item.ingreso3 ?? '',
+          salida3: item.salida3 ?? '',
+          ingreso4: item.ingreso4 ?? '',
+          salida4: item.salida4 ?? ''
+        }))
+      : []; 
+      
+      //creando las filas en excel
+      const ws = XLSX.utils.json_to_sheet(exportData, {
+        
+        header: [
+          'codigo','nombre','fecha',
+          'ingreso1','salida1',
+          'ingreso2','salida2',
+          'ingreso3','salida3',
+          'ingreso4','salida4'
+        ]
+      });
+      
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Reporte');
+      XLSX.writeFile(wb, 'AsistenciaReporte.xlsx');
+}
+
+
+
 }

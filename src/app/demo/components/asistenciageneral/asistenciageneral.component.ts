@@ -350,6 +350,49 @@ export class AsistenciageneralComponent implements OnInit {
        
     }
 
+    //generar archivo en excel
+    generandoEXCEL() {
+  // Usando solo datos filtrados
+  const filteredData = this.dt1?.filteredValue as any[] | undefined;
+
+  // Usando toda la tabla
+  const data =
+    filteredData && filteredData.length > 0
+      ? filteredData
+      : this.Asistenciagenerales ?? [];
+
+  // si no hay datos, el arreglo queda vacio
+  const exportData =
+    data.length > 0
+      ? data.map((item: any) => ({
+          fecha: item.fechaFormateada ?? '',
+          hora: item.tiempoFormateado ?? '',
+          codigoEmpleado: item.codigoEmpleado ?? '',
+          nombreEmpleado: item.nombreEmpleado ?? '',
+          nombreMarcador: item.nombreMarcador ?? '',
+        }))
+      : [];
+
+  // Creando las columnas que iran en el excel
+  const ws = XLSX.utils.json_to_sheet(exportData, {
+    header: [
+      'fecha',
+      'hora',
+      'codigoEmpleado',
+      'nombreEmpleado',
+      'nombreMarcador'
+    ]
+  });
+
+  // Crear y descargar archivo
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Asistencia');
+
+  XLSX.writeFile(wb, 'AsistenciaGeneral.xlsx');
+}
+
+
+
     Buscar() {
         this.loading = true;
 
