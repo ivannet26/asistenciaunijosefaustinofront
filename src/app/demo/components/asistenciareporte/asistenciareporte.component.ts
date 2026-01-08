@@ -24,7 +24,7 @@ import * as XLSX from 'xlsx';
 type AsistenciaReporteExport = {
   codigo: string;
   nombre: string;
-  fecha: Date;
+  fecha: string;
   ingreso1: string;
   salida1: string;
   ingreso2: string;
@@ -45,16 +45,16 @@ type AsistenciaReporteExport = {
   salida9: string;
   ingreso10: string;
   salida10: string;
-  hfinaldia: number;
+  hfinaldia: string;
   observa: string;
   dianombre: string;
   obs_final: string;
-  descuento: number;      
-  htotalsemana: number;      
+  descuento: string;      
+  htotalsemana: string;      
   turno: string;
   cargo: string;
   unidad: string;
-  hr_falta:number;
+  hr_falta:string;
   cpu: string;
 };
 
@@ -198,81 +198,81 @@ export class AsistenciareporteComponent implements OnInit{
 
         return `${year}${month}${day}`; //formato AAAAMMDD
     }
-generateEXCEL() {
-  const data = this.asistenciaReporteLista ?? [];
-
-  const exportData = (Array.isArray(data) 
-  ? data : []).map((item: any) => ({
-    codigo: item.codigo ?? '',
-    nombre: item.nombre ?? '',
-    fecha: item.fecha ?? '',          
-    ingreso1: item.ingreso1 ?? '',
-    salida1: item.salida1 ?? '',
-    ingreso2: item.ingreso2 ?? '',
-    salida2: item.salida2 ?? '',
-    ingreso3: item.ingreso3 ?? '',
-    salida3: item.salida3 ?? '',
-    ingreso4: item.ingreso4 ?? '',
-    salida4: item.salida4 ?? '',
-    ingreso5: item.ingreso5 ?? '',
-    salida5: item.salida5 ?? '',
-    ingreso6: item.ingreso6 ?? '',
-    salida6: item.salida6 ?? '',
-    ingreso7: item.ingreso7 ?? '',
-    salida7: item.salida7 ?? '',
-    ingreso8: item.ingreso8 ?? '',
-    salida8: item.salida8 ?? '',
-    ingreso9: item.ingreso9 ?? '',
-    salida9: item.salida9 ?? '',
-    ingreso10: item.ingreso10 ?? '',
-    salida10: item.salida10 ?? '',
-    hfinaldia: item.hfinnaldia ?? 0,
-    observa: item.observa ?? '',
-    dianombre: item.dianombre ?? '',
-    obs_final: item.obs_final ?? '',
-    descuento: item.descuento ?? 0,
-    htotalsemana: item.htotalsemana ?? 0,
-    turno: item.turno ?? '',
-    cargo: item.cargo ?? '',
-    unidad: item.unidad ?? '',
-    hr_falta: item.hr_falta ?? 0,
-    cpu: item.cpu ?? ''
-  }));
-
-  //creando las filas en excel
-  const ws = XLSX.utils.json_to_sheet(exportData, {
+    
+    generateEXCEL() {
+      const data = this.asistenciaReporteLista ?? [];
+      
+      const exportData = (Array.isArray(data) 
+      ? data : []).map((item: any) => ({
+        codigo: item.codigo ?? '',
+        nombre: item.nombre ?? '',
+        fecha: item.fecha ?? '',
+        ingreso1: item.ingreso1 ?? '',
+        salida1: item.salida1 ?? '',
+        ingreso2: item.ingreso2 ?? '',
+        salida2: item.salida2 ?? '',
+        ingreso3: item.ingreso3 ?? '',
+        salida3: item.salida3 ?? '',
+        ingreso4: item.ingreso4 ?? '',
+        salida4: item.salida4 ?? '',
+        ingreso5: item.ingreso5 ?? '',
+        salida5: item.salida5 ?? '',
+        ingreso6: item.ingreso6 ?? '',
+        salida6: item.salida6 ?? '',
+        ingreso7: item.ingreso7 ?? '',
+        salida7: item.salida7 ?? '',
+        ingreso8: item.ingreso8 ?? '',
+        salida8: item.salida8 ?? '',
+        ingreso9: item.ingreso9 ?? '',
+        salida9: item.salida9 ?? '',
+        ingreso10: item.ingreso10 ?? '',
+        salida10: item.salida10 ?? '',
+        hfinaldia: item.hfinaldia ?? '',
+        observa: item.observa ?? '',
+        dianombre: item.dianombre ?? '',
+        obs_final: item.obs_final ?? '',
+        descuento: item.descuento ?? '',
+        htotalsemana: item.htotalsemana ?? '',
+        turno: item.turno ?? '',
+        cargo: item.cargo ?? '',
+        unidad: item.unidad ?? '',
+        hr_falta: item.hr_falta ?? '',
+        cpu: item.cpu ?? ''
+      }));
+      
+      //creando las filas en excel
+      const ws = XLSX.utils.json_to_sheet(exportData, {
         
-  header: [
-  'codigo',
-  'nombre', 
-  'fecha', 
-  'ingreso1', 'salida1',
-  'ingreso2', 'salida2',
-  'ingreso3', 'salida3',
-  'ingreso4', 'salida4',
-  'ingreso5', 'salida5',
-  'ingreso6', 'salida6',
-  'ingreso7', 'salida7',
-  'ingreso8', 'salida8',
-  'ingreso9', 'salida9',
-  'ingreso10', 'salida10',
-  'hfinaldia', 
-  'observa', 
-  'dianombre', 
-  'obs_final',
-  'descuento', 
-  'htotalsemana',
-  'turno', 
-  'cargo', 
-  'unidad',
-  'hr_falta', 
-  'cpu']
-});
-
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Reporte');
-  XLSX.writeFile(wb, 'AsistenciaReporte.xlsx');
-}
-
-
-}
+        header: [
+          'codigo',
+          'nombre', 
+          'fecha', 
+          'ingreso1', 'salida1',
+          'ingreso2', 'salida2',
+          'ingreso3', 'salida3',
+          'ingreso4', 'salida4',
+          'ingreso5', 'salida5',
+          'ingreso6', 'salida6',
+          'ingreso7', 'salida7',
+          'ingreso8', 'salida8',
+          'ingreso9', 'salida9',
+          'ingreso10', 'salida10',
+          'hfinaldia', 
+          'observa', 
+          'dianombre', 
+          'obs_final',
+          'descuento', 
+          'htotalsemana',
+          'turno', 
+          'cargo', 
+          'unidad',
+          'hr_falta', 
+          'cpu']
+        });
+        
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Reporte');
+        XLSX.writeFile(wb, 'AsistenciaReporte.xlsx');
+      }
+    
+    }
