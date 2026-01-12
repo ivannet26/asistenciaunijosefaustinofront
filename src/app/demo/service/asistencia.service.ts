@@ -6,6 +6,7 @@ import { ApiResponse } from '../model/api_response';
 import { GlobalserviceService } from './globalservice.service';
 import { ConfigService } from './config.service';
 import { asistenciareporte } from '../model/asistenciareporte';
+import { asistenciareportebasico } from '../model/asistenciareportebasico';
 @Injectable({
   providedIn: 'root'
 })
@@ -73,6 +74,16 @@ export class AsistenciaService {
         .set('fechainicio', fechaInicio)
         .set('fechafin',fechaFin);
         return this.http.get<ApiResponse<asistenciareporte>>(urlConsulta).pipe(map(response => response.data));
+
+    }
+
+    getReporteBasico(fechaInicio:string,fechaFin:string):Observable<asistenciareportebasico[]>{
+        let urlConsulta = `${this.apiUrl}/SpListaReporteBasico?fechainicio=${fechaInicio}&fechafin=${fechaFin}`
+
+        const params = new HttpParams()
+        .set('fechainicio', fechaInicio)
+        .set('fechafin',fechaFin);
+        return this.http.get<ApiResponse<asistenciareportebasico>>(urlConsulta).pipe(map(response => response.data));
 
     }
 

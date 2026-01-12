@@ -72,8 +72,28 @@ export class AppMenuComponent implements OnInit {
             }
         });
 
+        // forzar "Asistencia básica" dentro del grupo INTEGRACION 
+        const integracion = menuItems.find(g => (g.label || '').toLowerCase() === 'integracion');
+        
+        if (integracion) {
+            integracion.items = integracion.items || [];
+            
+            const existe = integracion.items.some(i =>
+                i.routerLink?.[0] === 'asistenciareportebasico');
+                
+                if (!existe) {
+                    integracion.items.push({
+                        label: 'asistencia básica',
+                        icon: 'pi pi-fw pi-cog',
+                        routerLink: ['asistenciareportebasico']
+                    });
+                }
+            }
+
+
         return menuItems;
     }
+        
 
     private getIconForFormulario(codigoFormulario: string): string {
         const iconMap: { [key: string]: string } = {

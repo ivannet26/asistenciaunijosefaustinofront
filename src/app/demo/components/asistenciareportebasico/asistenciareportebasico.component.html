@@ -1,1 +1,110 @@
-<p>asistenciareportebasico works!</p>
+<p-toast></p-toast>
+
+<div class="container mx-auto p-4">
+  <p-panel header="Asistencia basica">
+    <p-breadcrumb class="w-full max-w-full" [model]="items"></p-breadcrumb>
+    <br />
+  </p-panel>
+</div>
+
+<div class="card p-4">
+  <!-- Contenedor principal -->
+  <div class="flex flex-wrap lg:flex-nowrap items-center gap-4 w-full">
+    <div class="flex flex-wrap gap-4 w-full lg:flex-row lg:items-end">
+      <div class="w-full sm:w-auto">
+        <label for="startDate" class="block font-medium text-gray-700 mb-2">Fecha de Inicio:</label>
+        <p-calendar
+          dateFormat="dd/mm/yy"
+          [(ngModel)]="startDate"
+          inputId="startDate"
+          class="w-full"
+          placeholder="Selecciona una fecha"
+          [showIcon]="true"
+        ></p-calendar>
+      </div>
+
+      <div class="w-full sm:w-auto">
+        <label for="endDate" class="block font-medium text-gray-700 mb-2">Fecha Fin:</label>
+        <p-calendar
+          dateFormat="dd/mm/yy"
+          [(ngModel)]="endDate"
+          inputId="endDate"
+          class="w-full"
+          placeholder="Selecciona una fecha"
+          [showIcon]="true"
+        ></p-calendar>
+      </div>
+
+      <!-- Botones -->
+      <div class="position">
+        <div class="flex justify-end">
+
+            <button
+            pButton
+            type="button"
+            label="Buscar"
+            icon="pi pi-search"
+            (click)="Buscar()"
+            class="p-button-sm p-button-success mr-2  btn-info-pj"
+            id="btnbuscar"
+            ></button>
+                
+                
+            <button
+            pButton
+            type="button"
+            label="Exportar"
+            icon="pi pi-file-excel"
+            (click)="generateEXCEL()"
+            class="p-button-sm p-button-success mr-2  btn-info-pj"
+            ></button>
+            </div>
+
+        </div>
+    
+    </div>
+  </div>
+
+  <!-- Tabla -->
+  <div class="mt-6 overflow-x-auto">
+    <p-table
+      #dt1
+      [value]="asistenciaReporteBasicoLista"
+      dataKey="id"
+      [paginator]="true"
+      [rows]="10"
+      [rowsPerPageOptions]="[5, 10, 20]"
+      [loading]="loading"
+      responsiveLayout="scroll"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Id del Empleado</th>
+          <th>Nombres</th>
+          <th>Departamento</th>
+          <th>Fecha</th>
+          <th>Asistencia Diaria</th>
+          <!--<th>Marcador</th>-->
+          <th>Primera Marcación</th>
+          <th>Última Marcación</th>
+          <th>Tiempo Total</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-rowData>
+        <tr>
+          <td>{{ rowData.codigoEmpleado }}</td>
+          <td>{{ rowData.nombreEmpleado }}</td>
+          <td>{{ rowData.unidadDepartamento }}</td>
+          <td>{{ rowData.fechaFormateada }}</td>
+          <td>{{ rowData.dia }}</td>
+          <!--<td>{{ rowData.nombreMarcador }}</td>-->
+          <td>{{ rowData.ingreso }}</td>
+          <td>{{ rowData.salida }}</td>
+          <td>{{ rowData.tiempoTotal }}</td>
+        </tr>
+      </ng-template>
+
+    </p-table>
+  </div>
+</div>
