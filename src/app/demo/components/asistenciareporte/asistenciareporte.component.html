@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 
 <div class="container mx-auto p-4">
-    <p-panel header="Asistencia general">
+    <p-panel header="Reporte de asistencia">
         <p-breadcrumb class="w-full max-w-full" [model]="items"></p-breadcrumb>
         <br />
     </p-panel>
@@ -88,8 +88,8 @@
         >
             <ng-template pTemplate="header">
                 <tr>
-                    <th>codigo</th>
-                    <th>nombre</th>
+                    <th style="min-width: 220px">codigo</th>
+                    <th style="min-width: 400px">nombre</th>
                     <th>fecha</th>
                     <th>ingreso1</th>
                     <th>salida1</th>
@@ -123,8 +123,56 @@
                     <th>hr_falta</th>
                     <th>cpu</th>
                 </tr>
-                
+                <tr>
+                    <th>
+                        <p-columnFilter type="text" field="codigo" 
+                            placeholder="Ingresar codigo"
+                            aria-label="filtrar"
+                            filterOn="input">
+                        </p-columnFilter>
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="nombre" 
+                            placeholder="Ingresar nombre"
+                            aria-label="filtrar"
+                            filterOn="input">
+                        </p-columnFilter>
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
             </ng-template>
+            
             <ng-template pTemplate="body" let-rowData>
                 <tr>
                     <td>{{ rowData.codigo }}</td>

@@ -22,7 +22,7 @@ import { AuthGuard } from './demo/service/auth.guard';
                 path: 'Menu', component: AppLayoutComponent, canActivate: [AuthGuard],
                 children: [
                     {
-                        path: '', redirectTo: 'asistenciageneral', pathMatch: 'full'
+                        path: '', redirectTo: 'asistenciareporte', pathMatch: 'full'
                     },
                     { path: 'asistencia', loadChildren: () => import('./demo/components/consulta-asistencia/asistencia.module').then(m => m.AsistenciaModule) },
                     { path: 'marcaciones', loadChildren: () => import('./demo/components/consulta-marcaciones/marcaciones.module').then(m => m.MarcacionesModule) },

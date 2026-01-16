@@ -5,7 +5,8 @@ import { OverlayPanel } from 'primeng/overlaypanel';
 import { Router } from '@angular/router';
 import { GlobalserviceService } from '../demo/service/globalservice.service';
 import { AutorizacionService } from '../demo/service/autorizacion.service';
-
+import { PrimeNGConfig } from 'primeng/api';
+import { calendario_traduccion } from '../shared/Calendarioa';
 @Component({
     selector: 'app-topbar',
     templateUrl: './app.topbar.component.html',
@@ -20,7 +21,12 @@ export class AppTopBarComponent {
 
     @ViewChild('topbarmenu') menu!: ElementRef;
 
-    constructor(public layoutService: LayoutService,private link:Router,private gS:GlobalserviceService,private aS:AutorizacionService) { }
+    constructor(public layoutService: LayoutService,private link:Router,
+        private gS:GlobalserviceService,private aS:AutorizacionService,
+        private primeng:PrimeNGConfig) { 
+            //this.primeng.ripple = true;
+            this.primeng.setTranslation(calendario_traduccion());
+        }
 
     nombre:string=this.gS.getNombre_Usuario();
 

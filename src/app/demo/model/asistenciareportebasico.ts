@@ -8,4 +8,5 @@ export interface asistenciareportebasico {
   ingreso: string;
   salida: string;
   tiempoTotal: string;
+  tiempoFormateado:string;
 }
