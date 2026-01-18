@@ -200,8 +200,8 @@ export class AsistenciareporteComponent implements OnInit{
     }
     
     generateEXCEL() {
-      const data = this.asistenciaReporteLista ?? [];
-      
+      //const data = this.asistenciaReporteLista ?? [];
+      const data =this.dt1.filteredValue || this.asistenciaReporteLista || [];
       const exportData = (Array.isArray(data) 
       ? data : []).map((item: any) => ({
         codigo: item.codigo ?? '',
@@ -227,9 +227,9 @@ export class AsistenciareporteComponent implements OnInit{
         salida9: item.salida9 ?? '',
         ingreso10: item.ingreso10 ?? '',
         salida10: item.salida10 ?? '',
-        hfinaldia: item.hfinaldia ?? '',
+        hfinaldia: item.hFinalDia ?? '',
         observa: item.observa ?? '',
-        dianombre: item.dianombre ?? '',
+        dianombre: item.diaNombre ?? '',
         obs_final: item.obs_final ?? '',
         descuento: item.descuento ?? '',
         htotalsemana: item.htotalsemana ?? '',

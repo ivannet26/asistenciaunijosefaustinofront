@@ -25,9 +25,9 @@ export interface asistenciareporte
     ingreso10:string;
     salida10:string;
 
-    hfinaldia:string;
+    hFinalDia:string;
     observa:string;
-    dianombre:string;
+    diaNombre:string;
     obs_final:string;
     descuento:string;
     hTotalSemana:string;

@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 
 <div class="container mx-auto p-4">
-  <p-panel header="Asistencia basica">
+  <p-panel header="Reporte de marcaciones">
     <p-breadcrumb class="w-full max-w-full" [model]="items"></p-breadcrumb>
     <br />
   </p-panel>
@@ -93,9 +93,24 @@
         <tr>
           <th></th>
           <th>
-            <p-columnFilter type="text"  field="nombreEmpleado" placeholder="Ingresar valor" aria-label="Filtrar" filterOn="input">              
+            <p-columnFilter type="text"  field="nombreEmpleado" 
+            placeholder="Ingresar valor" 
+            aria-label="Filtrar"  matchMode="contains"
+            filterOn="input">              
             </p-columnFilter>
           </th>
+        <th></th>
+        <th>
+             <p-columnFilter type="text"  field="nombreMarcador" 
+            placeholder="Ingresar valor"  matchMode="contains"
+            aria-label="Filtrar" 
+            filterOn="input">              
+            </p-columnFilter>
+         
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
         </tr>
       </ng-template>
 

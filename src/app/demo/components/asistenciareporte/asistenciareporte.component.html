@@ -88,7 +88,7 @@
         >
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="min-width: 220px">codigo</th>
+                    <th >codigo</th>
                     <th style="min-width: 400px">nombre</th>
                     <th>fecha</th>
                     <th>ingreso1</th>
@@ -125,11 +125,7 @@
                 </tr>
                 <tr>
                     <th>
-                        <p-columnFilter type="text" field="codigo" 
-                            placeholder="Ingresar codigo"
-                            aria-label="filtrar"
-                            filterOn="input">
-                        </p-columnFilter>
+
                     </th>
                     <th>
                         <p-columnFilter type="text" field="nombre" 
@@ -199,9 +195,9 @@
                     <td>{{rowData.ingreso10}}</td>
                     <td>{{rowData.salida10}}</td>
                     
-                    <td>{{rowData.hfinaldia}}</td>
+                    <td>{{rowData.hFinalDia}}</td>
                     <td>{{rowData.observa}}</td>
-                    <td>{{rowData.dianombre}}</td>
+                    <td>{{rowData.diaNombre}}</td>
                     <td>{{rowData.obs_final}}</td>
                     <td>{{rowData.descuento}}</td>
                     <td>{{rowData.hTotalSemana}}</td>
